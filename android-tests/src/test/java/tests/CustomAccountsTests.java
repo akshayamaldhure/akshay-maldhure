@@ -33,7 +33,9 @@ public class CustomAccountsTests {
         setupPage.clickNext();
         setupPage.selectFeedbackOption(SetupPage.FeedbackOptions.DISABLE);
         setupPage.clickNext();
-        //TODO: add assertions for the review screen here
+        assertTrue(setupPage.isTextSeen(SetupPage.Currency.USD.toString()));
+        assertTrue(setupPage.isTextSeen(SetupPage.AccountType.LET_ME_HANDLE));
+        assertTrue(setupPage.isTextSeen(SetupPage.FeedbackOptions.DISABLE));
         setupPage.clickDoneButton();
     }
 
