@@ -3,6 +3,7 @@ package tests;
 import common.Driver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.AccountCreationPage;
 import pages.AccountsPage;
@@ -15,8 +16,6 @@ public class CustomAccountsTests {
     SetupPage setupPage;
     AccountsPage accountsPage;
     AccountCreationPage accountCreationPage;
-    String accountName = "Test Account";
-    String updatedAccountName = "Test Account 2";
 
     @BeforeClass
     public void setupPageObjects() {
@@ -42,19 +41,21 @@ public class CustomAccountsTests {
     }
 
     @Test(priority = 2)
-    public void verifyCreateAccount() {
+    @Parameters({"accountName", "accountDescription"})
+    public void verifyCreateAccount(String accountName, String accountDescription) {
         assertTrue(accountsPage.noAccountsExist());
         accountsPage.clickAddAccountButton();
         accountCreationPage.enterAccountName(accountName);
         accountCreationPage.setCurrency(SetupPage.Currency.USD.toString());
         accountCreationPage.setAccountType(AccountCreationPage.AccountType.CASH);
-        accountCreationPage.enterAccountDescription("This is the account description.");
+        accountCreationPage.enterAccountDescription(accountDescription);
         accountCreationPage.clickSaveButton();
         assertTrue(accountsPage.isAccountPresent(accountName));
     }
 
     @Test(priority = 3)
-    public void verifyEditAccount() {
+    @Parameters({"updatedAccountName"})
+    public void verifyEditAccount(String updatedAccountName) {
         accountsPage.editAccount();
         accountCreationPage.enterAccountName(updatedAccountName);
         accountCreationPage.clickSaveButton();
@@ -62,7 +63,8 @@ public class CustomAccountsTests {
     }
 
     @Test(priority = 4)
-    public void verifyMarkAccountAsFavorite() {
+    @Parameters({"accountName"})
+    public void verifyMarkAccountAsFavorite(String accountName) {
         accountsPage.markAccountAsFavorite();
         accountsPage.clickFavorites();
         assertTrue(accountsPage.isAccountPresent(accountName)); // the test fails as the account does not get listed in the Favorites tab within the globalTimeout duration

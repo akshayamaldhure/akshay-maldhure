@@ -4,6 +4,12 @@
         <listener class-name="common.MyTestListener"/>
     </listeners>
     <test name="android-tests">
+        <parameter name="accountName" value="Test Account"/>
+        <parameter name="accountDescription" value="This is the account description."/>
+        <parameter name="updatedAccountName" value="Test Account 2"/>
+        <parameter name="transactionAmount" value="500"/>
+        <parameter name="transactionDescription" value="This is the transaction description."/>
+        <parameter name="expectedTransactionAmount" value="$500.00"/>
         <classes>
             <class name="tests.CustomAccountsTests">
                 <methods>

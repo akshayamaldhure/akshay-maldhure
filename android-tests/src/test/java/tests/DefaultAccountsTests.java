@@ -3,11 +3,12 @@ package tests;
 import common.Driver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class DefaultAccountsTests {
 
@@ -17,7 +18,6 @@ public class DefaultAccountsTests {
     SubAccountPage subAccountPage;
     TransactionsPage transactionsPage;
     TransactionCreationPage transactionCreationPage;
-    String transactionAmount = "500";
 
     @BeforeClass
     public void setupPageObjects() {
@@ -46,22 +46,22 @@ public class DefaultAccountsTests {
     }
 
     @Test(priority = 7)
-    public void verifyCreateTransactionInDefaultAccount() {
+    @Parameters({"transactionAmount", "transactionDescription", "expectedTransactionAmount"})
+    public void verifyCreateTransactionInDefaultAccount(String transactionAmount, String transactionDescription, String expectedTransactionAmount) {
         String accountName = AccountsPage.DefaultAccounts.ASSETS;
         accountsPage.clickAccountButton(accountName);
         subAccountPage.clickSubAccountButton();
         transactionsPage.clickCreateTransactionButton();
-        transactionCreationPage.addTransactionDescription("Test description");
+        transactionCreationPage.addTransactionDescription(transactionDescription);
         transactionCreationPage.addTransactionAmount(transactionAmount);
         transactionCreationPage.clickSaveTransactionButton();
         String updatedTransactionAmount = transactionsPage.getAccountBalance();
-        assertEquals(updatedTransactionAmount, "$" + transactionAmount + ".00");
+        assertEquals(updatedTransactionAmount, expectedTransactionAmount);
     }
 
     @Test(priority = 8)
-    public void verifyDeleteTransaction() throws InterruptedException {
+    public void verifyDeleteTransaction() {
         transactionsPage.deleteTransaction();
-        Thread.sleep(10);
     }
 
     @AfterClass
