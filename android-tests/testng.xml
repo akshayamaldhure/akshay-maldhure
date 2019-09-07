@@ -14,6 +14,13 @@
                     <include name="verifyDeleteAccount"/>
                 </methods>
             </class>
+            <class name="tests.DefaultAccountsTests">
+                <methods>
+                    <include name="verifyCompleteSetup"/>
+                    <include name="verifyCreateTransactionInDefaultAccount"/>
+                    <include name="verifyDeleteTransaction"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
