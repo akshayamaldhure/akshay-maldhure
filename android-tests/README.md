@@ -2,6 +2,8 @@
 This repository contains some UI tests for GnuCash Android app.
 
 ## Test cases proposed for automation
+Considering and following [the Test Pyramid](https://martinfowler.com/bliki/TestPyramid.html), this test suite contains a minimal set of critical end-to-end UI-based tests.
+
 #### Custom accounts
 | Scenario | Category | Expected condition |
 | -------- | -------- | ------------------ |
@@ -17,7 +19,6 @@ This repository contains some UI tests for GnuCash Android app.
 | Complete setup with default accounts option | Setup | The setup should take the user to the Accounts page and the default accounts should be seen. |
 | Add a new transaction to one of the default accounts | Account Actions | The created transaction should be seen in the Transactions tab. |
 | Edit the transaction amount | Account Actions | The edited transaction should show the updated amount in the Transactions tab. |
-| Duplicate the transaction | Account Actions | A new copy of the duplicated transaction should be seen in the Transactions tab. |
 | Delete the transaction | Account Actions | The deleted transaction should not be seen in the Transactions tab. |
 
 ## Tech stack
