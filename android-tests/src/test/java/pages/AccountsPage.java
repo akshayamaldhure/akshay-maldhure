@@ -14,6 +14,21 @@ public class AccountsPage {
     @FindBy(id = "org.gnucash.android:id/fab_create_account")
     private WebElement addAccountButton;
 
+    @FindBy(id = "org.gnucash.android:id/options_menu")
+    private WebElement editAccountMenu;
+
+    @FindBy(id = "org.gnucash.android:id/favorite_status")
+    private WebElement markAccountAsFavoriteButton;
+
+    @FindBy(id = "org.gnucash.android:id/empty_view")
+    private WebElement emptyViewNoAccounts;
+
+    @FindBy(xpath = "//android.widget.TextView[contains(@text, 'FAVORITES')]")
+    private WebElement favoritesTabButton;
+
+    @FindBy(xpath = "//android.widget.TextView[contains(@text, 'ALL')]")
+    private WebElement allTabButton;
+
     AndroidDriver androidDriver;
 
     public AccountsPage(AndroidDriver androidDriver) {
@@ -32,5 +47,31 @@ public class AccountsPage {
 
     public boolean isAccountPresent(String accountName) {
         return this.androidDriver.findElement(By.xpath("//android.widget.TextView[contains(@text, '" + accountName + "')]")).isDisplayed();
+    }
+
+    public void editAccount() {
+        editAccountMenu.click();
+        this.androidDriver.findElement(By.xpath("//android.widget.TextView[contains(@text, 'Edit Account')]")).click();
+    }
+
+    public void markAccountAsFavorite() {
+        markAccountAsFavoriteButton.click();
+    }
+
+    public void deleteAccount() {
+        editAccountMenu.click();
+        this.androidDriver.findElement(By.xpath("//android.widget.TextView[contains(@text, 'Delete')]")).click();
+    }
+
+    public boolean noAccountsExist() {
+        return emptyViewNoAccounts.isDisplayed();
+    }
+
+    public void clickAll() {
+        allTabButton.click();
+    }
+
+    public void clickFavorites() {
+        favoritesTabButton.click();
     }
 }

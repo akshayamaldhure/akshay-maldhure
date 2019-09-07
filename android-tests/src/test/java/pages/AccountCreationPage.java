@@ -38,6 +38,7 @@ public class AccountCreationPage {
     }
 
     public void enterAccountName(String accountName) {
+        inputAccountTextField.clear();
         inputAccountTextField.sendKeys(accountName);
     }
 
@@ -52,6 +53,7 @@ public class AccountCreationPage {
     }
 
     public void enterAccountDescription(String accountDescription) {
+        accountDescriptionTextField.clear();
         accountDescriptionTextField.sendKeys(accountDescription);
     }
 
