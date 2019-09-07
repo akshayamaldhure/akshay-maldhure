@@ -6,7 +6,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class AccountsPage {
+
+    public class DefaultAccounts {
+        public static final String ASSETS = "Assets";
+        public static final String EQUITY = "Equity";
+        public static final String EXPENSES = "Expenses";
+        public static final String INCOME = "Income";
+        public static final String LIABILITIES = "Liabilities";
+    }
+
+    public static final List<String> DEFAULT_ACCOUNTS = Arrays.asList(DefaultAccounts.ASSETS,
+            DefaultAccounts.EQUITY, DefaultAccounts.EXPENSES, DefaultAccounts.INCOME, DefaultAccounts.LIABILITIES);
 
     @FindBy(xpath = "//android.widget.Button[@text='DISMISS']")
     private WebElement dismissButton;
@@ -34,6 +48,10 @@ public class AccountsPage {
     public AccountsPage(AndroidDriver androidDriver) {
         this.androidDriver = androidDriver;
         PageFactory.initElements(androidDriver, this);
+    }
+
+    public void clickAccountButton(String accountName) {
+        this.androidDriver.findElement(By.xpath("//android.widget.TextView[contains(@text, '" + accountName + "')]")).click();
     }
 
     public void clickDismissButton() {
