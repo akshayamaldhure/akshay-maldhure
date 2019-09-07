@@ -9,11 +9,13 @@ import pages.SetupPage;
 
 import static org.testng.Assert.assertTrue;
 
-public class AccountsTests {
+public class CustomAccountsTests {
 
     SetupPage setupPage;
     AccountsPage accountsPage;
     AccountCreationPage accountCreationPage;
+    String accountName = "Test Account";
+    String updatedAccountName = "Test Account 2";
 
     @BeforeSuite
     public void setupPageObjects() {
@@ -31,14 +33,14 @@ public class AccountsTests {
         setupPage.clickNext();
         setupPage.selectFeedbackOption(SetupPage.FeedbackOptions.DISABLE);
         setupPage.clickNext();
-        // add assertions for the review screen here
+        //TODO: add assertions for the review screen here
         setupPage.clickDoneButton();
     }
 
     @Test(priority = 2)
-    public void verifyAccountCreation() {
-        String accountName = "Test Account";
+    public void verifyCreateAccount() {
         accountsPage.clickDismissButton();
+        assertTrue(accountsPage.noAccountsExist());
         accountsPage.clickAddAccountButton();
         accountCreationPage.enterAccountName(accountName);
         accountCreationPage.setCurrency(SetupPage.Currency.USD.toString());
@@ -46,5 +48,27 @@ public class AccountsTests {
         accountCreationPage.enterAccountDescription("This is the account description.");
         accountCreationPage.clickSaveButton();
         assertTrue(accountsPage.isAccountPresent(accountName));
+    }
+
+    @Test(priority = 3)
+    public void verifyEditAccount() {
+        accountsPage.editAccount();
+        accountCreationPage.enterAccountName(updatedAccountName);
+        accountCreationPage.clickSaveButton();
+        assertTrue(accountsPage.isAccountPresent(updatedAccountName));
+    }
+
+    @Test(priority = 4)
+    public void verifyMarkAccountAsFavorite() {
+        accountsPage.markAccountAsFavorite();
+        accountsPage.clickFavorites();
+        assertTrue(accountsPage.isAccountPresent(accountName)); // the test fails as the account does not get listed in the Favorites tab within the globalTimeout duration
+    }
+
+    @Test(priority = 5)
+    public void verifyDeleteAccount() {
+        accountsPage.clickAll();
+        accountsPage.deleteAccount();
+        assertTrue(accountsPage.noAccountsExist());
     }
 }

@@ -5,10 +5,13 @@
     </listeners>
     <test name="android-tests">
         <classes>
-            <class name="tests.AccountsTests">
+            <class name="tests.CustomAccountsTests">
                 <methods>
                     <include name="verifyCompleteSetup"/>
-                    <include name="verifyAccountCreation"/>
+                    <include name="verifyCreateAccount"/>
+                    <include name="verifyEditAccount"/>
+                    <include name="verifyMarkAccountAsFavorite"/>
+                    <include name="verifyDeleteAccount"/>
                 </methods>
             </class>
         </classes>
