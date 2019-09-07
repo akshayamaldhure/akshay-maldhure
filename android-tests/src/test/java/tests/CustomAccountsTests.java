@@ -37,11 +37,11 @@ public class CustomAccountsTests {
         assertTrue(setupPage.isTextSeen(SetupPage.AccountType.LET_ME_HANDLE));
         assertTrue(setupPage.isTextSeen(SetupPage.FeedbackOptions.DISABLE));
         setupPage.clickDoneButton();
+        accountsPage.clickDismissButton();
     }
 
     @Test(priority = 2)
     public void verifyCreateAccount() {
-        accountsPage.clickDismissButton();
         assertTrue(accountsPage.noAccountsExist());
         accountsPage.clickAddAccountButton();
         accountCreationPage.enterAccountName(accountName);
