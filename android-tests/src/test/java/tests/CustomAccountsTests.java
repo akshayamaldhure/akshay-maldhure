@@ -1,7 +1,8 @@
 package tests;
 
 import common.Driver;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.AccountCreationPage;
 import pages.AccountsPage;
@@ -17,7 +18,7 @@ public class CustomAccountsTests {
     String accountName = "Test Account";
     String updatedAccountName = "Test Account 2";
 
-    @BeforeSuite
+    @BeforeClass
     public void setupPageObjects() {
         setupPage = new SetupPage(Driver.androidDriver);
         accountsPage = new AccountsPage(Driver.androidDriver);
@@ -72,5 +73,10 @@ public class CustomAccountsTests {
         accountsPage.clickAll();
         accountsPage.deleteAccount();
         assertTrue(accountsPage.noAccountsExist());
+    }
+
+    @AfterClass
+    public void tearDown() {
+        Driver.androidDriver.resetApp();
     }
 }

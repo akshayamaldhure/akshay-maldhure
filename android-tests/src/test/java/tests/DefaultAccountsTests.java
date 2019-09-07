@@ -1,7 +1,8 @@
 package tests;
 
 import common.Driver;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -18,7 +19,7 @@ public class DefaultAccountsTests {
     TransactionCreationPage transactionCreationPage;
     String transactionAmount = "500";
 
-    @BeforeSuite
+    @BeforeClass
     public void setupPageObjects() {
         setupPage = new SetupPage(Driver.androidDriver);
         accountsPage = new AccountsPage(Driver.androidDriver);
@@ -28,7 +29,7 @@ public class DefaultAccountsTests {
         transactionCreationPage = new TransactionCreationPage(Driver.androidDriver);
     }
 
-    @Test(priority = 1)
+    @Test(priority = 6)
     public void verifyCompleteSetup() {
         setupPage.clickNext();
         setupPage.selectCurrency(SetupPage.Currency.USD.toString());
@@ -44,7 +45,7 @@ public class DefaultAccountsTests {
         accountsPage.clickDismissButton();
     }
 
-    @Test(priority = 2)
+    @Test(priority = 7)
     public void verifyCreateTransactionInDefaultAccount() {
         String accountName = AccountsPage.DefaultAccounts.ASSETS;
         accountsPage.clickAccountButton(accountName);
@@ -57,9 +58,15 @@ public class DefaultAccountsTests {
         assertEquals(updatedTransactionAmount, "$" + transactionAmount + ".00");
     }
 
-    @Test(priority = 3)
-    public void verifyDeleteTransaction() {
+    @Test(priority = 8)
+    public void verifyDeleteTransaction() throws InterruptedException {
         transactionsPage.deleteTransaction();
+        Thread.sleep(10);
+    }
+
+    @AfterClass
+    public void tearDown() {
+        Driver.androidDriver.resetApp();
     }
 
 }
