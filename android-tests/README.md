@@ -7,7 +7,7 @@ This repository contains some UI tests for GnuCash Android app.
 | -------- | -------- | ------------------ |
 | Complete setup with custom account option | Setup | The setup should take the user to the Accounts page and no pre-created accounts should be seen. |
 | Create a custom account | Account Creation | The created account should be seen on the Accounts page. |
-| Edit a custom account | Account Actions | The edited account should show the updated name on the Accounts page. |
+| Edit a custom account - update name | Account Actions | The edited account should show the updated name on the Accounts page. |
 | Mark the account as favorite | Account Actions | The account marked as favorite should be in the Favorites tab. |
 | Delete a custom account | Account Actions | The deleted account should not be seen on the Accounts page. |
 
