@@ -13,8 +13,6 @@ This repository contains some UI tests for GnuCash Android app.
 3. Android emulator must be up and running before running any tests. Please refer to the instructions provided [here](https://developer.android.com/studio/run/emulator-commandline) for the same.
 
 ## Running the tests
-`cd android-tests`
-
 `mvn clean compile test`
 
 
