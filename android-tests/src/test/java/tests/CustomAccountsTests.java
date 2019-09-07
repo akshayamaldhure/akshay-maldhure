@@ -26,18 +26,8 @@ public class CustomAccountsTests {
 
     @Test(priority = 1)
     public void verifyCompleteSetup() {
-        setupPage.clickNext();
-        setupPage.selectCurrency(SetupPage.Currency.USD.toString());
-        setupPage.clickNext();
-        setupPage.selectAccountOption(SetupPage.AccountType.LET_ME_HANDLE);
-        setupPage.clickNext();
-        setupPage.selectFeedbackOption(SetupPage.FeedbackOptions.DISABLE);
-        setupPage.clickNext();
-        assertTrue(setupPage.isTextSeen(SetupPage.Currency.USD.toString()));
-        assertTrue(setupPage.isTextSeen(SetupPage.AccountType.LET_ME_HANDLE));
-        assertTrue(setupPage.isTextSeen(SetupPage.FeedbackOptions.DISABLE));
-        setupPage.clickDoneButton();
-        accountsPage.clickDismissButton();
+        Common.completeSetup(setupPage, accountsPage, SetupPage.Currency.USD.toString(),
+                SetupPage.AccountType.LET_ME_HANDLE, SetupPage.FeedbackOptions.DISABLE);
     }
 
     @Test(priority = 2)

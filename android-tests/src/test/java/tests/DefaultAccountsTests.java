@@ -7,7 +7,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
 
-import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class DefaultAccountsTests {
@@ -31,18 +30,8 @@ public class DefaultAccountsTests {
 
     @Test(priority = 6)
     public void verifyCompleteSetup() {
-        setupPage.clickNext();
-        setupPage.selectCurrency(SetupPage.Currency.USD.toString());
-        setupPage.clickNext();
-        setupPage.selectAccountOption(SetupPage.AccountType.DEFAULT);
-        setupPage.clickNext();
-        setupPage.selectFeedbackOption(SetupPage.FeedbackOptions.DISABLE);
-        setupPage.clickNext();
-        assertTrue(setupPage.isTextSeen(SetupPage.Currency.USD.toString()));
-        assertTrue(setupPage.isTextSeen(SetupPage.AccountType.DEFAULT));
-        assertTrue(setupPage.isTextSeen(SetupPage.FeedbackOptions.DISABLE));
-        setupPage.clickDoneButton();
-        accountsPage.clickDismissButton();
+        Common.completeSetup(setupPage, accountsPage, SetupPage.Currency.USD.toString(),
+                SetupPage.AccountType.DEFAULT, SetupPage.FeedbackOptions.DISABLE);
     }
 
     @Test(priority = 7)
