@@ -1,0 +1,16 @@
+{
+  "staging": {
+    "baseUrl": "http://localhost:3030"
+  },
+  "preProd": {
+    "baseUrl": "http://localhost:3030"
+  },
+  "common": {
+    "products": "/products",
+    "categories": "/categories",
+    "stores": "/stores",
+    "services": "/services",
+    "version": "/version",
+    "healthcheck": "/healthcheck"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "local": {
+    "url": "http://127.0.0.1:4723/wd/hub",
+    "deviceName": "emulator-5554"
+  },
+  "sauceLabs": {
+    "url": ""
+  },
+  "common": {
+    "app": "GnucashAndroid_v2.4.0.apk",
+    "globalTimeout": 10,
+    "autoGrantPermissions": true,
+    "platformVersion": "8.0",
+    "appPackage": "org.gnucash.android",
+    "appActivity": ".ui.account.AccountsActivity"
+  }
+}

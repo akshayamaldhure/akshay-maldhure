@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="api-tests" verbose="1">
+    <listeners>
+        <listener class-name="common.MyTestListener"/>
+    </listeners>
+    <test name="best-buy-api-tests">
+        <parameter name="defaultProductsLimit" value="10"/>
+        <parameter name="invalidProductId" value="someInvalidProductId"/>
+        <classes>
+            <class name="tests.ProductsTests">
+                <methods>
+                    <include name="verifyDefaultProductLimit"/>
+                    <include name="verifyProductLimit"/>
+                    <include name="verifyProductDetails"/>
+                    <include name="verifyAllProductsReturns404ForInvalidProductId"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

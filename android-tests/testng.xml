@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="gnucash-android-tests" verbose="1">
+    <listeners>
+        <listener class-name="common.MyTestListener"/>
+    </listeners>
+    <test name="android-tests">
+        <classes>
+            <class name="tests.AccountsTests">
+                <methods>
+                    <include name="verifySomething"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
