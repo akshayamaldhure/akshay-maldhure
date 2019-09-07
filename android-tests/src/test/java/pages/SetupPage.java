@@ -55,4 +55,8 @@ public class SetupPage {
     public void clickDoneButton() {
         doneButton.click();
     }
+
+    public boolean isTextSeen(String text) {
+        return this.androidDriver.findElement(By.xpath("//android.widget.TextView[contains(@text, '" + text + "')]")).isDisplayed();
+    }
 }
