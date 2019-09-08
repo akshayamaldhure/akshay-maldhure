@@ -3,10 +3,9 @@ package models.entities;
 import lombok.Getter;
 
 @Getter
-public class Service {
-    private int id;
-    private String name;
+public class StoreServices {
     private String createdAt;
     private String updatedAt;
-    private StoreServices storeservices;
+    private int storeId;
+    private int serviceId;
 }

@@ -4,8 +4,8 @@
         <listener class-name="common.MyTestListener"/>
     </listeners>
     <test name="best-buy-api-tests">
-        <parameter name="defaultProductsLimit" value="10"/>
-        <parameter name="invalidProductId" value="someInvalidProductId"/>
+        <parameter name="defaultEntityLimit" value="10"/>
+        <parameter name="invalidEntityId" value="someInvalidEntityId"/>
         <classes>
             <class name="tests.ProductsTests">
                 <methods>
@@ -13,6 +13,30 @@
                     <include name="verifyProductLimit"/>
                     <include name="verifyProductDetails"/>
                     <include name="verifyAllProductsReturns404ForInvalidProductId"/>
+                </methods>
+            </class>
+            <class name="tests.CategoriesTests">
+                <methods>
+                    <include name="verifyDefaultCategoryLimit"/>
+                    <include name="verifyCategoryLimit"/>
+                    <include name="verifyCategoryDetails"/>
+                    <include name="verifyReturns404ForInvalidCategoryId"/>
+                </methods>
+            </class>
+            <class name="tests.ServicesTests">
+                <methods>
+                    <include name="verifyDefaultServiceLimit"/>
+                    <include name="verifyServiceLimit"/>
+                    <include name="verifyServiceDetails"/>
+                    <include name="verifyReturns404ForInvalidServiceId"/>
+                </methods>
+            </class>
+            <class name="tests.StoresTests">
+                <methods>
+                    <include name="verifyDefaultStoreLimit"/>
+                    <include name="verifyStoreLimit"/>
+                    <include name="verifyStoreDetails"/>
+                    <include name="verifyReturns404ForInvalidStoreId"/>
                 </methods>
             </class>
         </classes>

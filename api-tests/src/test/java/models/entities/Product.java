@@ -10,7 +10,7 @@ public class Product {
     private String name;
     private String type;
     private float price;
-    private long upc;
+    private String upc;
     private int shipping;
     private String description;
     private String manufacturer;
