@@ -11,10 +11,9 @@ This repository contains tests for various APIs like /entitys, /categories, /sto
 | Verify the custom limit and skip parameters | GET | Should return the entity objects as per the limit and skip values passed. |
 | Verify entity details | GET | Should return the entity object with matching expected entity name. |
 | Verify entity details for an invalid entity id | GET | Should return 404. |
-| Verify entity creation | POST | Should create the entity with pre-defined attributes. |
-| Verify entity update | PATCH | Should update the entity with the new name. |
+| Verify entity creation | POST | Should create the entity with pre-defined attributes and the `createdAt` timestamp should be populated accordingly. |
+| Verify entity update | PATCH | Should update the entity with the new name and the `updatedAt` timestamp should be updated. |
 | Verify delete for an invalid entity id | DELETE | Should return 404. |
-
 
 ## Tech stack
 1. Java 8
